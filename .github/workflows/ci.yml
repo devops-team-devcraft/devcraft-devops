@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test Clemens's app:
+  test:
     runs-on: ubuntu-latest
 
     steps:
