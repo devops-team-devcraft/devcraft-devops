@@ -20,3 +20,18 @@ jobs:
       - run: npm ci
       - run: npx prisma generate
       - run: npm test
+
+  build-docker:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
