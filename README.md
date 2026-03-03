@@ -75,3 +75,4 @@ Ablauf:
 
 Nach jedem Push auf main wird automatisch ein aktuelles, versioniertes Docker Image bei ghcr erstellt.
 
+![CI/CD Architektur](github-workflow-diagram.png)
