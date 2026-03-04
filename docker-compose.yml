@@ -10,6 +10,8 @@
 #
 # Requires a .env file with: POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, DATABASE_URL_DOCKER
 
+# This file has been pasted into /opt/notes-api(docker-compose.yml on the server
+
 services:
   db:
     image: postgres:17-alpine
@@ -22,6 +24,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U devcraft -d devcraft_notes"]
       interval: 10s
@@ -29,7 +32,8 @@ services:
       retries: 5
 
   app:
-    build: .
+  # Digest anstatt Tag verwenden, damit man nicht immer den aktuelisierten Tag angeben muss
+    image: ghcr.io/devops-team-devcraft/devcraft-devops@sha256:6187498f8c532645a5f34a6901e762f7b629fae3e9a6cc044b9f8fce009c2b21
     container_name: devcraft-app
     ports:
       - "3000:3000"
@@ -38,6 +42,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    restart: unless-stopped
 
   # pgAdmin is a web-based database management tool for PostgreSQL. - simply use this url in your browser: http://localhost:8080 after starting the containers with `npm run docker:start`
   pgadmin:
