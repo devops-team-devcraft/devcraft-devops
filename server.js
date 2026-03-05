@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
+  res.json({ status: "ok", version: "1.0.1", team: "devcraft" });
 });
 
 app.use("/notes", notesRouter);
