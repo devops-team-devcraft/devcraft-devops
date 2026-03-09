@@ -61,3 +61,4 @@ services:
 
 volumes:
   postgres_data:
+  uptime-kuma-data:
