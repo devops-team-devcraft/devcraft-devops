@@ -77,4 +77,23 @@ Nach jedem Push auf main wird automatisch ein aktuelles, versioniertes Docker Im
 
 ![CI/CD Architektur](github-workflow-diagram.png)
 
+## Wichtige Docker-Befehle
+
+Alle Services starten:                  docker compose up
+Alle Services im Hintergrund starten:   docker compose up -d
+Alles stoppen und aufräumen:            docker compose down
+Alles stoppen und Volumes löschen:      docker compose down -v
+
+Logs aller Services anzeigen:           docker compose logs
+Logs eines best. Serivces anzeigen:     docker compose logs app
+Logs live verfolgen:                    docker compose logs -f app
+
+Images neu bauen:                       docker compose build
+Images neu bauen und Services starten:  docker compose up --build
+Status der laufenden Services:          docker compose ps
+
+Shell in laufendem Container öffnen:    docker compose exec app sh
+
+
+
 <!-- Test row for build -->
